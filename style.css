@@ -1,0 +1,367 @@
+/* ALAG Engine - Premium SaaS Styling */
+
+:root {
+    /* Brand Navy Blue */
+    --primary-color: #0f172a;
+    /* Vibrant Electric Blue */
+    --accent-blue: #3b82f6; 
+    --accent-blue-hover: #2563eb;
+    
+    /* Subtle Teal Gradient Elements */
+    --teal-glow: #14b8a6;
+    
+    /* Semantic Colors */
+    --success-green: #10b981;
+    --error-red: #ef4444;
+    --warning-orange: #f59e0b;
+    
+    /* Backgrounds & Panels */
+    --bg-color: #f8fafc;
+    --card-bg: #ffffff;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --border-light: #e2e8f0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    overflow-x: hidden;
+}
+
+/* Typography Hierarchy */
+h1 { font-size: 2rem; font-weight: 700; color: var(--primary-color); }
+h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: 1.5rem; border-bottom: 2px solid var(--border-light); padding-bottom: 0.5rem;}
+h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; }
+.subtext { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;}
+
+/* Top Nav */
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--primary-color);
+    padding: 1rem 2.5rem;
+    color: white;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-weight: 700;
+    font-size: 1.2rem;
+    letter-spacing: 0.5px;
+}
+
+.logo-icon {
+    width: 24px;
+    height: 24px;
+    background: linear-gradient(135deg, var(--accent-blue), var(--teal-glow));
+    border-radius: 6px;
+}
+
+.profile-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: var(--accent-blue);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.profile-icon:hover {
+    transform: scale(1.05);
+}
+
+/* Workspace Framework */
+.workspace {
+    max-width: 1200px;
+    margin: 3rem auto;
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.dashboard-header {
+    margin-bottom: -0.5rem;
+}
+
+/* Reusable Cards */
+.card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 10px 15px -3px rgba(0,0,0,0.02);
+    border: 1px solid var(--border-light);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 20px 25px -5px rgba(0,0,0,0.05);
+}
+
+/* Section 1: Ingestion Zone */
+.upload-container {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.drop-zone {
+    flex: 1;
+    border: 2px dashed var(--accent-blue);
+    border-radius: 10px;
+    padding: 2rem 1rem;
+    text-align: center;
+    background-color: rgba(59, 130, 246, 0.03); /* Faint blue wash */
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.drop-zone:hover {
+    background-color: rgba(59, 130, 246, 0.08);
+    transform: translateY(-2px);
+    border-color: var(--accent-blue-hover);
+}
+
+.cloud-icon {
+    width: 48px;
+    color: var(--accent-blue);
+    margin-bottom: 1rem;
+}
+
+/* Buttons */
+.primary-btn {
+    background: linear-gradient(135deg, var(--accent-blue), #2563eb);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.4);
+}
+
+.primary-btn:hover {
+    background: linear-gradient(135deg, var(--accent-blue-hover), #1d4ed8);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.5);
+}
+
+.primary-btn:active {
+    transform: translateY(0);
+}
+
+.outline-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    border-radius: 8px;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.outline-btn:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* Progress Bar */
+.progress-container {
+    margin-top: 1.5rem;
+    animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.progress-details {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--accent-blue);
+}
+
+.progress-bar-track {
+    width: 100%;
+    height: 8px;
+    background-color: var(--border-light);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-blue), var(--teal-glow));
+    border-radius: 4px;
+    transition: width 0.5s ease;
+    box-shadow: 0 0 10px rgba(20, 184, 166, 0.5);
+}
+
+/* Section 2: Control Room */
+.control-room {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.control-left {
+    flex: 1;
+    max-width: 60%;
+}
+
+.slider-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.slider-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+.slider-label.lenient { color: var(--success-green); }
+.slider-label.strict { color: var(--error-red); }
+
+/* Custom Range Slider */
+input[type=range] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 6px;
+    background: linear-gradient(to right, var(--success-green), var(--warning-orange), var(--error-red));
+    border-radius: 3px;
+    outline: none;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: white;
+    border: 3px solid var(--primary-color);
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    transition: transform 0.1s ease;
+}
+
+input[type=range]::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+}
+
+.slider-tooltip {
+    margin-top: 0.75rem;
+    font-size: 0.9rem;
+    color: var(--primary-color);
+}
+
+/* Section 3: Analytics */
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.metric-box {
+    background: rgba(248, 250, 252, 0.8);
+    border: 1px solid var(--border-light);
+    border-radius: 10px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.metric-box.success {
+    border-color: var(--success-green);
+    background: rgba(16, 185, 129, 0.05);
+}
+.metric-box.success .metric-value { color: var(--success-green); }
+
+.metric-box.highlight {
+    border-color: var(--accent-blue);
+    background: rgba(59, 130, 246, 0.05);
+}
+.metric-box.highlight .metric-value { color: var(--accent-blue); }
+
+.metric-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.5rem;
+}
+
+.metric-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.charts-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.chart-wrapper {
+    background: white;
+    border: 1px solid var(--border-light);
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.02);
+}
+
+canvas {
+    width: 100% !important;
+    height: 300px !important;
+}
+
+/* Responsive constraints */
+@media (max-width: 900px) {
+    .upload-container, .charts-container {
+        flex-direction: column;
+        grid-template-columns: 1fr;
+    }
+    .control-room {
+        flex-direction: column;
+        gap: 2rem;
+        align-items: flex-start;
+    }
+    .control-left { max-width: 100%; width: 100%;}
+    .metrics-grid {
+        grid-template-columns: 1fr;
+    }
+}

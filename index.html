@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALAG Engine | Enterprise Dashboard</title>
+    <!-- Modern Sans-Serif Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chart.js for High-End Data Viz -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Top Navigation Bar -->
+    <nav class="top-nav">
+        <div class="logo">
+            <div class="logo-icon"></div>
+            <span>ALAG Engine</span>
+        </div>
+        <div class="profile-icon">
+            <span class="user-initial">VK</span>
+        </div>
+    </nav>
+
+    <!-- Main Workspace -->
+    <main class="workspace">
+        <div class="dashboard-header">
+            <h1>NLP Assessment Hub</h1>
+            <p>Automated bulk essay analysis driven by Zero-Shot Transformer Entailment.</p>
+        </div>
+
+        <!-- Section 1: Data Ingestion -->
+        <section class="card config-card">
+            <h2>Data Ingestion</h2>
+            
+            <div class="upload-container">
+                <div class="drop-zone" id="drop-zone-1">
+                    <input type="file" id="ref-file" accept=".pdf,.docx,.txt" style="display: none;">
+                    <svg class="cloud-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+                    </svg>
+                    <p><strong>1. Upload Reference Q&A</strong></p>
+                    <p class="subtext">Drop your Professor Rubric (.PDF / .DOCX)</p>
+                </div>
+
+                <div class="drop-zone" id="drop-zone-2">
+                    <input type="file" id="student-file" accept=".pdf,.csv,.zip,.docx,.doc,.txt" style="display: none;">
+                    <svg class="cloud-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                    <p><strong>2. Upload Student Submissions</strong></p>
+                    <p class="subtext">Drop Batch Archive (.ZIP / .CSV)</p>
+                </div>
+            </div>
+
+            <button class="primary-btn trigger-animation" id="initialize-btn">Initialize Grading Engine</button>
+            
+            <div class="progress-container" id="progress-container" style="display: none;">
+                <div class="progress-details">
+                    <span class="progress-label">Evaluating batch via DeBERTa NLI...</span>
+                    <span class="progress-percent">65%</span>
+                </div>
+                <div class="progress-bar-track">
+                    <div class="progress-bar-fill" style="width: 65%;"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: The Control Room -->
+        <section class="card control-room">
+             <div class="control-left">
+                 <h3>Grading Strictness Calibration (Sigmoid Function)</h3>
+                 <p class="subtext">Dynamically adjust the grading curve based on AI entailment confidence.</p>
+                 <div class="slider-wrapper">
+                    <span class="slider-label lenient">Lenient</span>
+                    <input type="range" class="strictness-slider" id="strictnessSlider" min="1" max="25" value="8.5" step="0.5">
+                    <span class="slider-label strict">Strict</span>
+                 </div>
+                 <div class="slider-tooltip">Current k-value: <strong id="k-valueDisplay">8.5</strong></div>
+                 
+                 <h3 style="margin-top: 1.5rem;">Maximum Score</h3>
+                 <p class="subtext">Set the maximum possible score for the assignment.</p>
+                 <input type="number" id="maxScoreInput" value="8.0" step="0.5" style="padding: 0.5rem; border: 1px solid #cbd5e1; border-radius: 4px; font-family: 'Inter', sans-serif; width: 100px; margin-top: 0.5rem;">
+             </div>
+             <div class="control-right">
+                 <button class="export-btn outline-btn" id="export-btn">
+                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="20">
+                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                     </svg>
+                     Export Grades to CSV/Excel
+                 </button>
+             </div>
+        </section>
+
+        <!-- Section 3: Class-Wide Analytics Dashboard -->
+        <section class="card analytics-card">
+            <h2>Batch Evaluation Analytics</h2>
+            
+            <div class="metrics-grid">
+                <div class="metric-box">
+                    <span class="metric-title">Total Papers Graded</span>
+                    <span class="metric-value">328</span>
+                </div>
+                <div class="metric-box success">
+                    <span class="metric-title">Class Average</span>
+                    <span class="metric-value">6.8 <span style="font-size: 1rem; color: #64748b;">/ 8.0</span></span>
+                </div>
+                <div class="metric-box highlight">
+                    <span class="metric-title">Highest Score</span>
+                    <span class="metric-value">8.0</span>
+                </div>
+            </div>
+
+            <div class="charts-container">
+                <div class="chart-wrapper">
+                    <h3>Class Grade Distribution</h3>
+                    <p class="subtext">Gaussian-smoothed grading curve mapping student performance.</p>
+                    <canvas id="bellCurveChart"></canvas>
+                </div>
+                <div class="chart-wrapper">
+                    <h3>Concept Attrition Analysis</h3>
+                    <p class="subtext">Percentage of class that successfully conveyed specific core rubric elements.</p>
+                    <canvas id="heatmapChart"></canvas>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
